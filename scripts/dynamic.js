@@ -734,7 +734,7 @@ Waves.init();
 
             $.ajax({
                 type: "POST",
-                url: "php/process.php",
+                url: "../php/process.php",
                 data: "name=" + name + "&email=" + email + "$subject=" + subject + "&message=" + message,
                 success : function(text){
                     if (text == "success"){
