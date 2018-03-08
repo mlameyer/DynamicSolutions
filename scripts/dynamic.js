@@ -719,7 +719,10 @@ Waves.init();
             update_text_fields($this);
             validate_field($this);
         });
-        
+
+        // Handle HTML5 autofocus
+        $('input[autofocus]').siblings('label, i').addClass('active');
+
         $(document).submit(function(event) {
             event.preventDefault();
             submitForm();
@@ -732,27 +735,22 @@ Waves.init();
             var subject = $("#form3").val();
             var message = $("#form4").val();
 
-            $.ajax({
-                type: "POST",
-                url: "../php/process.php",
-                data: "name=" + name + "&email=" + email + "$subject=" + subject + "&message=" + message,
-                success : function(text){
-                    if (text == "success"){
-                        formSuccess();
-                    } else {
-                        formError();
-                        submitMSG(false,text);
-                    }
-                }
-            });
+            var data = new FormData();
+            data.append('name', name);
+            data.append('sendEmailAddress', email);
+            data.append('subject', subject);
+            data.append('message', message);
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "http://localhost:8082/api/SendMail/", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(data);
+            var response = JSON.parse(xhttp.responseText);
         }
         function formSuccess() {
             $("#msgSubmit").removeClass("hidden");
         }
-
-        // Handle HTML5 autofocus
-        $('input[autofocus]').siblings('label, i').addClass('active');
-
+        
         // HTML form reset
         $(document).on('reset', function (e) {
             var $formReset = $(e.target);
