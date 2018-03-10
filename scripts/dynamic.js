@@ -734,21 +734,18 @@ Waves.init();
             var email = $("#form2").val();
             var subject = $("#form3").val();
             var message = $("#form4").val();
-
+        
             var data = new FormData();
             data.append('name', name);
             data.append('sendEmailAddress', email);
             data.append('subject', subject);
             data.append('message', message);
-
+        
             var xhttp = new XMLHttpRequest();
             xhttp.open("POST", "http://localhost:8082/api/SendMail/", true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send(data);
-            var response = JSON.parse(xhttp.responseText);
-        }
-        function formSuccess() {
-            $("#msgSubmit").removeClass("hidden");
+            //var response = JSON.parse(xhttp.responseText);
         }
         
         // HTML form reset
