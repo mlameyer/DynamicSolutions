@@ -751,7 +751,7 @@ Waves.init();
             //xhttp.setRequestHeader("Cache-Control", "no-cache");
             //xhttp.setRequestHeader("Token-Id", token.toString());
             //xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
-            xhttp.setRequestHeader('Access-Control-Allow-Origin', 'http://www.dynamicsolutions.tech');
+            xhttp.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:80');
             //xhttp.setRequestHeader('Access-Control-Request-Method', '*');
             // xhttp.setRequestHeader('Access-Control-Request-Headers', 'accept');
             xhttp.send(data);
