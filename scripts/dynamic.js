@@ -725,28 +725,9 @@ Waves.init();
 
         $(document).submit(function(event) {
             event.preventDefault();
-            submitForm()
-            {
-                // Initiate Variables With Form Content
-                var name = $("#form1").val();
-                var email = $("#form2").val();
-                var subject = $("#form3").val();
-                var message = $("#form4").val();
-            
-                var data = new FormData();
-                data.append('name', name);
-                data.append('sendEmailAddress', email);
-                data.append('subject', subject);
-                data.append('message', message);
-            
-                var xhttp = new XMLHttpRequest();
-                xhttp.open("POST", "http://localhost:8082/api/SendMail/", true);
-                xhttp.setRequestHeader("Content-type", "application/json");
-                xhttp.send(data);
-                //var response = JSON.parse(xhttp.responseText);
-            };
+            submitForm();
         });
-/*
+
         function submitForm() {
             // Initiate Variables With Form Content
             var name = $("#form1").val();
@@ -754,19 +735,29 @@ Waves.init();
             var subject = $("#form3").val();
             var message = $("#form4").val();
         
-            var data = new FormData();
-            data.append('name', name);
-            data.append('sendEmailAddress', email);
-            data.append('subject', subject);
-            data.append('message', message);
-        
+            var data = null;
+            
+            //var token = new Date().getTime();
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "http://localhost:8082/api/SendMail/", true);
-            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.withCredentials = true;
+            xhttp.addEventListener("readystatechange", function () {
+                if (this.readyState === 4) {
+                  console.log(this.responseText);
+                }
+              });
+            xhttp.open("POST", "http://www.testapi.com:8082/api/SendMail/?name=" + name + "&sendEmailAddress=" + email + 
+            "&subject=" + subject + "&message=" + message, true);
+            xhttp.setRequestHeader("Content-type", "multipart/form-data");
+            //xhttp.setRequestHeader("Cache-Control", "no-cache");
+            //xhttp.setRequestHeader("Token-Id", token.toString());
+            //xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+            xhttp.setRequestHeader('Access-Control-Allow-Origin', 'http://www.dynamicsolutions.tech');
+            //xhttp.setRequestHeader('Access-Control-Request-Method', '*');
+            // xhttp.setRequestHeader('Access-Control-Request-Headers', 'accept');
             xhttp.send(data);
             //var response = JSON.parse(xhttp.responseText);
         }
-*/        
+        
         // HTML form reset
         $(document).on('reset', function (e) {
             var $formReset = $(e.target);
