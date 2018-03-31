@@ -17,38 +17,23 @@
     <!-- Google Maps settings -->
     <script>
         // Regular map
-        // function initialize() {
-        //     var var_location = new google.maps.LatLng(44.8455126, -93.4947038);
+        function initMap() {
+            var var_location = new google.maps.LatLng(44.8455126, -93.4947038);
 
-        //     var var_mapoptions = {
-        //         center: var_location,
-        //         zoom: 14
-        //     };
+            var var_mapoptions = {
+                center: var_location,
+                zoom: 14
+            };
 
-        //     var var_map = new google.maps.Map(document.getElementById("map-container"),
-        //         var_mapoptions);
+            var var_map = new google.maps.Map(document.getElementById("map-container"),
+                var_mapoptions);
 
-        //     var var_marker = new google.maps.Marker({
-        //         position: var_location,
-        //         map: var_map,
-        //         title: "Eden Prairie"
-        //     });
-        // }
-        function initialize() {
-            var map = new google.maps.Map(
-                document.getElementById('map'), {
-                    center: new google.maps.LatLng(44.8455126, -93.4947038),
-                    zoom: 14,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                });
-
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(44.8455126, -93.4947038),
-                map: map
+            var var_marker = new google.maps.Marker({
+                position: var_location,
+                map: var_map,
+                title: "Eden Prairie"
             });
-
         }
-
         // Initialize maps
         //google.maps.event.addDomListener(window, 'load', initialize);
     </script>
@@ -588,7 +573,7 @@
     <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOuf4POlv0JY4uKnYmOvWvONMSL7KHHtU&callback=initialize"
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOuf4POlv0JY4uKnYmOvWvONMSL7KHHtU&callback=initMap"
         type="text/javascript"></script>
     <!-- Carousel options -->
     <script>
