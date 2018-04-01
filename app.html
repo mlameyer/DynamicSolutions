@@ -308,7 +308,7 @@
     <!-- Google Maps settings -->
     <script>
         // Regular map
-        function regular_map() {
+        function initMap() {
             var var_location = new google.maps.LatLng(44.8455126, -93.4947038);
 
             var var_mapoptions = {
@@ -325,10 +325,12 @@
                 title: "Eden Prairie"
             });
         }
-
         // Initialize maps
-        google.maps.event.addDomListener(window, 'load', regular_map);
+        google.maps.event.addDomListener(window, 'load', initMap);
     </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOuf4POlv0JY4uKnYmOvWvONMSL7KHHtU&callback=initMap"
+        type="text/javascript"></script>
 </body>
 
 </html>
