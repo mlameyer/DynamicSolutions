@@ -740,7 +740,7 @@ Waves.init();
             //var token = new Date().getTime();
             var xhttp = new XMLHttpRequest();
             //xhttp.withCredentials = true;
-             xhttp.open("POST", "http://www.testapi.com:8082/api/SendMail/?name=" + name + "&sendEmailAddress=" + email + 
+             xhttp.open("POST", "https://emailapidynamicsolutions.azurewebsites.net/api/SendMail/?name=" + name + "&sendEmailAddress=" + email + 
              "&subject=" + subject + "&message=" + message, true);
             //xhttp.open("POST", "http://www.testapi.com:8082/api/SendMail/", true);
             xhttp.onreadystatechange = function() {
@@ -749,7 +749,7 @@ Waves.init();
                 }
             }
             //xhttp.setRequestHeader('Content-type', 'application/json');
-            xhttp.setRequestHeader('Access-Control-Allow-Origin', 'http://www.dynamicsolutions.tech');
+            xhttp.setRequestHeader('Access-Control-Allow-Origin', 'https://dynamicsolutions.azurewebsites.net/');
             xhttp.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
             xhttp.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
             xhttp.send(data);
